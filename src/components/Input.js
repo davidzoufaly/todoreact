@@ -2,10 +2,7 @@ import React from "react";
 import uniqid from "uniqid";
 
 class Input extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { inputedItem: { name: "", key: "", checked: false} };
-  }
+  state = { inputedItem: { name: "", key: "", checked: false } };
 
   onInputChange = event => {
     this.setState({
@@ -15,7 +12,8 @@ class Input extends React.Component {
 
   addToDoLocal = event => {
     if (
-      event.type === "click" || (event.type === "keydown" && event.key === "Enter")
+      event.type === "click" ||
+      (event.type === "keydown" && event.key === "Enter")
     ) {
       this.props.addItem(this.state.inputedItem);
       //clear text field

@@ -1,54 +1,31 @@
 import React from "react";
+import ListItem from "./ListItem";
 
 class TaskList extends React.Component {
-  helper = hidingItems => {
-    const listDOM = this.props.toDoList.map(singleItem => {
-      if (!hidingItems) {
-        return (
-          <li key={singleItem.key}>
-            <input
-              type="checkbox"
-              defaultChecked={singleItem.checked}
-              onClick={() => this.props.completeItem(singleItem)}
-            />
-            {singleItem.name}
-            <button onClick={() => this.props.deleteItem(singleItem.key)}>
-              Delete Item
-            </button>
-            <button onClick={() => this.props.editItem(singleItem)}>
-              Edit Item
-            </button>
-          </li>
-        );
-      } else if(hidingItems && !singleItem.checked) {
-        return (
-          <li key={singleItem.key}>
-            <input
-              type="checkbox"
-              defaultChecked={singleItem.checked}
-              onClick={() => this.props.completeItem(singleItem)}
-            />
-            {singleItem.name}
-            <button onClick={() => this.props.deleteItem(singleItem.key)}>
-              Delete Item
-            </button>
-            <button onClick={() => this.props.editItem(singleItem)}>
-              Edit Item
-            </button>
-          </li>
-        );
-      } else {
-        return "Something went wrong"
-      }
-    });
-    return listDOM;
+  listItem = item => {
+    return (
+      <ListItem
+        item={item}
+        deleteItem={this.props.deleteItem}
+        editItem={this.props.editItem}
+        completeItem={this.props.completeItem}
+      />
+    );
   };
 
   render() {
-    const listItems = this.helper(this.props.hideItems);
+    // eslint-disable-next-line array-callback-return
+    const listDOM = this.props.toDoList.map(singleItem => {
+      if (!this.props.hideItems) {
+        return this.listItem(singleItem);
+      } else if (this.props.hideItems && !singleItem.checked) {
+        return this.listItem(singleItem);
+      }
+    });
+
     return (
       <div>
-        <ul>{listItems}</ul>
+        <ul>{listDOM}</ul>
       </div>
     );
   }

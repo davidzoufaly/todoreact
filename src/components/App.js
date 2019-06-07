@@ -1,19 +1,19 @@
 import React from "react";
+
+import Header from "./Header";
 import Input from "./Input";
 import TaskList from "./TaskList";
 import TaskStatistics from "./TaskStatistics";
+import HideShowCompleted from "./HideShowCompleted";
 
-const retrievedData = window.localStorage.getItem("list");
+const getData = {toDoList: JSON.parse(window.localStorage.getItem("list"))};
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      toDoList: JSON.parse(retrievedData),
+    state = {
+      toDoList: [],
       editedItem: "",
-      hide: false
+      hide: ""
     };
-  }
 
   addItem = actualToDo => {
     if (actualToDo.name !== "" || actualToDo.key !== "") {
@@ -68,11 +68,13 @@ class App extends React.Component {
     this.setState({ toDoList: newList });
   };
 
-  hideCompleted = () => {
-    this.setState(prevState => ({
-      hide: !prevState.hide
-    }));
-  };
+  handleHideShow = boolean => {
+    this.setState({hide: boolean})
+  }
+
+  componentDidMount() {
+    return getData.toDoList !== null ? this.setState({toDoList: getData.toDoList}) : null
+  }
 
   render() {
     let editInput = "";
@@ -83,13 +85,13 @@ class App extends React.Component {
             value={this.state.editedItem.name}
             onChange={this.changeEdit}
           />
-          <button onClick={this.submitEdit}>Potvrdit změnu</button>
+          <button onClick={this.submitEdit}>Update</button>
         </div>
       );
     }
     return (
       <div className="div">
-        <h1>What you need to do?</h1>
+        <Header />
         <Input addItem={this.addItem} />
         <TaskList
           toDoList={this.state.toDoList}
@@ -99,15 +101,14 @@ class App extends React.Component {
           hideItems={this.state.hide}
         />
         {editInput}
-        <button onClick={this.hideCompleted}>
-          {this.state.hide ? "Show" : "Hide"} completed
-        </button>
-        <TaskStatistics/>
+        <HideShowCompleted booleanShow={this.handleHideShow}/>
+        <TaskStatistics toDoList={this.state.toDoList}/>
       </div>
     );
   }
   componentDidUpdate() {
     window.localStorage.setItem("list", JSON.stringify(this.state.toDoList));
+    window.localStorage.setItem("hide", JSON.stringify(this.state.hide));
   }
 }
 

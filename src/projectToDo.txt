@@ -1,0 +1,10 @@
+/// IN PROGRESS
+- refactor edit 
+
+/// MUST HAVE
+- nastylovat
+
+/// OPTIONAL
+- drag and drop
+- slozky tasků
+- napojeni na databazku
