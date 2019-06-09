@@ -1,10 +1,12 @@
 /// IN PROGRESS
-- refactor edit 
+- nastylovat
 
 /// MUST HAVE
-- nastylovat
+- handle error
+- upload + comment
 
 /// OPTIONAL
 - drag and drop
 - slozky tasků
 - napojeni na databazku
+- submit edit enterem, onclickout

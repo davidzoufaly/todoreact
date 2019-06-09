@@ -36,7 +36,7 @@ class Header extends React.Component {
     const quote = randomQuote(this.state.headerQuotes);
 
     return (
-      <div>
+      <div className="header section">
         <h1>{this.state.headerQuotes[quote].text}</h1>
         <p>- {this.state.headerQuotes[quote].author} -</p>
       </div>

@@ -23,14 +23,15 @@ class Input extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="input-component section">
         <input
           type="text"
           value={this.state.inputedItem.name}
           onChange={this.onInputChange}
           onKeyDown={this.addToDoLocal}
+          placeholder="Insert task name here"
         />
-        <button onClick={this.addToDoLocal}>Add item</button>
+        <button onClick={this.addToDoLocal}>Add</button>
       </div>
     );
   }

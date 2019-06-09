@@ -6,7 +6,7 @@ import TaskList from "./TaskList";
 import TaskStatistics from "./TaskStatistics";
 import HideShowCompleted from "./HideShowCompleted";
 
-const getData = {toDoList: JSON.parse(window.localStorage.getItem("list"))};
+const getToDoList = JSON.parse(window.localStorage.getItem("list"));
 
 class App extends React.Component {
     state = {
@@ -31,29 +31,14 @@ class App extends React.Component {
     });
   };
 
-  editItem = item => {
-    this.state.toDoList.map(e => {
-      if (e.key === item.key) {
-        this.setState({ editedItem: e });
-      }
-      return e;
-    });
-  };
-
-  changeEdit = e => {
-    this.setState({
-      editedItem: { name: e.target.value, key: this.state.editedItem.key }
-    });
-  };
-
-  submitEdit = () => {
+  submitEdit = (getItem) => {
     const newList = this.state.toDoList.map(item => {
-      if (item.key === this.state.editedItem.key) {
-        item.name = this.state.editedItem.name;
+      if (item.key === getItem.key) {
+        item.name = getItem.name;
       }
       return item;
     });
-    this.setState({ toDoList: newList, editedItem: "" });
+    this.setState({toDoList: newList});
   };
 
   completeItem = item => {
@@ -73,24 +58,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    return getData.toDoList !== null ? this.setState({toDoList: getData.toDoList}) : null
+    return getToDoList !== null ? this.setState({toDoList: getToDoList}) : null
   }
 
   render() {
-    let editInput = "";
-    if (this.state.editedItem !== "") {
-      editInput = (
-        <div>
-          <input
-            value={this.state.editedItem.name}
-            onChange={this.changeEdit}
-          />
-          <button onClick={this.submitEdit}>Update</button>
-        </div>
-      );
-    }
     return (
-      <div className="div">
+      <div className="app-wrapper">
         <Header />
         <Input addItem={this.addItem} />
         <TaskList
@@ -99,8 +72,8 @@ class App extends React.Component {
           editItem={this.editItem}
           completeItem={this.completeItem}
           hideItems={this.state.hide}
+          submitEdit={this.submitEdit}
         />
-        {editInput}
         <HideShowCompleted booleanShow={this.handleHideShow}/>
         <TaskStatistics toDoList={this.state.toDoList}/>
       </div>

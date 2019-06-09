@@ -19,14 +19,15 @@ class TaskStatistics extends React.Component {
       tasksCompleted, numberTasks
     );
     return (
-      <div>
-        <p>You have {numberTasks} tasks in the list</p>
+      <div className="statistics">
+        <h2>Stats</h2>
+        <p>You have <span>{numberTasks}</span> tasks in the list</p>
         <p>
-          You have {tasksCompleted} tasks completed and{" "}
-          {numberTasks - tasksCompleted} left
+          You have <span>{tasksCompleted}</span> tasks completed and{" "}
+          <span>{numberTasks - tasksCompleted}</span> left
         </p>
         <p>
-          Your progress rate is about {progress} % and{" "}
+          Your progress rate is about <span>{progress}</span> % and{" "}
           {progress >= 50
             ? "that is not bad!"
             : "that is quite low, are you lazy?"}
