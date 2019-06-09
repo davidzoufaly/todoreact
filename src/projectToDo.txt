@@ -1,9 +1,7 @@
 /// IN PROGRESS
-- nastylovat
+- handle error
 
 /// MUST HAVE
-- handle error
-- upload + comment
 
 /// OPTIONAL
 - drag and drop
