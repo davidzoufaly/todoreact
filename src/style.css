@@ -7,11 +7,11 @@
 body {
   position: relative;
   font-family: Helvetica, Arial, sans-serif;
-  background-image: url('./img/body-background.jpeg');
-  background-position: center center;
+  background-image: url('./img/background-image.jpg');
+  background-position: fixed;
   font-weight: 300;
   font-size: 100%;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   padding: 1rem;
 }
 
