@@ -11,9 +11,6 @@ Uses Localstorage as database -> storing tasks and hide/show option
 - Displaying random productive quote
 - Hiding / Showing completed tasks
 
-## Dependencies 
-"uniqid": "^5.0.3"
-
 ## Available Scripts
 
 In the project directory, you can run:
