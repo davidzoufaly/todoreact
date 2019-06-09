@@ -1,7 +1,7 @@
-# Simple 2DO app build on React
+# Simple 2DO app coded with React
 
-- Uses Localstorage as database -> Storing tasks and hide/show option
-- Does not use any state manager (Redux..)
+- Uses Localstorage instead of DB -> Storing tasks and hide/show option
+- Does not use any state manager (Redux etc.)
 - Use 0 dependencies (exept React, ReactDOM, reactScripts)
 - Build folder can be run in any browser / Debian like enviroment
 
