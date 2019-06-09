@@ -3,7 +3,7 @@
 - Uses Localstorage instead of DB -> Storing tasks and hide/show option
 - Does not use any state manager (Redux etc.)
 - Uses 0 dependencies (except React, ReactDOM, reactScripts)
-- Build folder can be run in any browser / Debian like enviroment
+- Build can be run in any browser / Debian like enviroment
 
 ## App functionality
 
