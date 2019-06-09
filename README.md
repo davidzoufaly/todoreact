@@ -6,10 +6,13 @@ Uses Localstorage as database -> storing tasks and hide/show option
 - Listing tasks
 - Editing tasks
 - Deleting tasks
-- Checking as completed tasks
+- Checking tasks as completed
 - Tracking tasks (All, Completed, Progress rate)
 - Displaying random productive quote
 - Hiding / Showing completed tasks
+
+## Dependencies 
+"uniqid": "^5.0.3"
 
 ## Available Scripts
 
