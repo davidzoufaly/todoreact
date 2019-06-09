@@ -1,10 +1,9 @@
 /// IN PROGRESS
-- handle error
 
 /// MUST HAVE
 
 /// OPTIONAL
 - drag and drop
-- slozky tasků
-- napojeni na databazku
-- submit edit enterem, onclickout
+- task folder
+- DB instead of LS
+- submit edit with enter or onClickOut
