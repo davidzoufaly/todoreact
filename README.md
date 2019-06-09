@@ -1,7 +1,12 @@
 # Simple 2DO app build on React
-Uses Localstorage as database -> storing tasks and hide/show option
+
+- Uses Localstorage as database -> Storing tasks and hide/show option
+- Does not use any state manager (Redux..)
+- Use 0 dependencies (exept React, ReactDOM, reactScripts)
+- Build folder can be run in any browser / Debian like enviroment
 
 ## App functionality
+
 - Adding tasks
 - Listing tasks
 - Editing tasks
@@ -10,6 +15,14 @@ Uses Localstorage as database -> storing tasks and hide/show option
 - Tracking tasks (All, Completed, Progress rate)
 - Displaying random productive quote
 - Hiding / Showing completed tasks
+
+## Version
+
+- 1.0
+
+## License
+
+- MIT
 
 ## Available Scripts
 
