@@ -1,9 +1,12 @@
 /// IN PROGRESS
 
 /// MUST HAVE
+- sound on all completed task
 
 /// OPTIONAL
+- submit edit with enter or onClickOut
 - drag and drop
+- ikonky místo tlačítek
 - task folder
 - DB instead of LS
-- submit edit with enter or onClickOut
+

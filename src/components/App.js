@@ -5,15 +5,18 @@ import Input from "./Input";
 import TaskList from "./TaskList";
 import TaskStatistics from "./TaskStatistics";
 import HideShowCompleted from "./HideShowCompleted";
+import ClearList from "./ClearList";
+import Datumek from "./Datumek";
+import Sound from "./Sound";
 
 const getToDoList = JSON.parse(window.localStorage.getItem("list"));
 
 class App extends React.Component {
-    state = {
-      toDoList: [],
-      editedItem: "",
-      hide: ""
-    };
+  state = {
+    toDoList: [],
+    editedItem: "",
+    hide: ""
+  };
 
   addItem = actualToDo => {
     if (actualToDo.name !== "" || actualToDo.key !== "") {
@@ -31,14 +34,14 @@ class App extends React.Component {
     });
   };
 
-  submitEdit = (getItem) => {
+  submitEdit = getItem => {
     const newList = this.state.toDoList.map(item => {
       if (item.key === getItem.key) {
         item.name = getItem.name;
       }
       return item;
     });
-    this.setState({toDoList: newList});
+    this.setState({ toDoList: newList });
   };
 
   completeItem = item => {
@@ -53,12 +56,18 @@ class App extends React.Component {
     this.setState({ toDoList: newList });
   };
 
-  handleHideShow = boolean => {
-    this.setState({hide: boolean})
-  }
+  handleHideShow = boolean => {
+    this.setState({ hide: boolean });
+  };
+
+  clear = () => {
+    this.setState({ toDoList: [] });
+  };
 
   componentDidMount() {
-    return getToDoList !== null ? this.setState({toDoList: getToDoList}) : null
+    return getToDoList !== null
+      ? this.setState({ toDoList: getToDoList })
+      : null;
   }
 
   render() {
@@ -66,6 +75,11 @@ class App extends React.Component {
       <div className="app-wrapper">
         <Header />
         <Input addItem={this.addItem} />
+        <div className="hide-completed section">
+          <HideShowCompleted booleanShow={this.handleHideShow} />
+          <ClearList clear={this.clear} />
+        </div>
+        <Datumek list={this.state.toDoList} />
         <TaskList
           toDoList={this.state.toDoList}
           deleteItem={this.deleteItem}
@@ -74,8 +88,8 @@ class App extends React.Component {
           hideItems={this.state.hide}
           submitEdit={this.submitEdit}
         />
-        <HideShowCompleted booleanShow={this.handleHideShow}/>
-        <TaskStatistics toDoList={this.state.toDoList}/>
+        <TaskStatistics toDoList={this.state.toDoList} />
+        <Sound list={this.state.toDoList}/>
       </div>
     );
   }

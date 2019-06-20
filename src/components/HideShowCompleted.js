@@ -21,15 +21,14 @@ class HideCompleted extends React.Component {
 
   render() {
     return (
-      <div className="hide-completed section">
       <button onClick={this.hideOnClick}>
         {this.state.hide ? "Show" : "Hide"} completed
       </button>
-      </div>
     );
   }
 
   componentDidMount() {
+    // set ulozenej stav po refreshi / otevření 
     this.setState({ hide: getHideStatus }, this.sendNewStateViaProps);
   }
 }
