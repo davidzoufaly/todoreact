@@ -1,39 +1,38 @@
 import React from "react";
-import audio from "../sounds/audio.mp3";
+import audio from "../sounds/win.wav";
 
 class Sound extends React.Component {
   constructor(props) {
     super(props);
     this.myRef = React.createRef();
-    this.state = {allCompleted: ""};
   }
 
   checkAllCompleted = () => {
     const checkedList = this.props.list.filter(e => {
       return e.checked === true ? e : "";
     });
-    return checkedList.length;
+    return checkedList.length === this.props.list.length &&
+      this.props.list.length !== 0
+      ? true
+      : false;
   };
-
-  set = () => {
-    const completed = this.checkAllCompleted();
-    const all = this.props.list.length;
-    return completed === all ? true : false
-  }
 
   render() {
     return (
       <div>
         <audio ref={this.myRef}>
-          <source src={audio} type="audio/mpeg" />
+          <source src={audio} type="audio/wav" />
         </audio>
       </div>
     );
   }
+
   componentDidUpdate() {
-    const isEqual = this.set();
-    if (isEqual) {
-      this.myRef.current.play()
+    const isEqual = this.checkAllCompleted();
+    if (isEqual && this.props.checkClick === true) {
+      // play sound
+      this.myRef.current.play();
+      this.props.resetClick();
     }
   }
 }

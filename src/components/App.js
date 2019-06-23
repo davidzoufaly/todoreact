@@ -15,7 +15,8 @@ class App extends React.Component {
   state = {
     toDoList: [],
     editedItem: "",
-    hide: ""
+    hide: "",
+    checkButtonClicked: ""
   };
 
   addItem = actualToDo => {
@@ -46,19 +47,21 @@ class App extends React.Component {
 
   completeItem = item => {
     const newList = this.state.toDoList.map(e => {
-      if (e.key === item.key && e.checked === false) {
-        e.checked = true;
-      } else if (e.key === item.key && e.checked === true) {
-        e.checked = false;
+      if (e.key === item.key) {
+        e.checked = !e.checked;
       }
       return e;
     });
-    this.setState({ toDoList: newList });
+    this.setState({toDoList: newList, checkButtonClicked: true});
   };
 
   handleHideShow = boolean => {
     this.setState({ hide: boolean });
   };
+
+  resetClick = () => {
+    this.setState({checkButtonClicked: false})
+  }
 
   clear = () => {
     this.setState({ toDoList: [] });
@@ -89,7 +92,7 @@ class App extends React.Component {
           submitEdit={this.submitEdit}
         />
         <TaskStatistics toDoList={this.state.toDoList} />
-        <Sound list={this.state.toDoList}/>
+        <Sound list={this.state.toDoList} checkClick={this.state.checkButtonClicked} resetClick={this.resetClick}/>
       </div>
     );
   }

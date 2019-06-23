@@ -1,7 +1,6 @@
 /// IN PROGRESS
 
 /// MUST HAVE
-- sound on all completed task
 
 /// OPTIONAL
 - submit edit with enter or onClickOut

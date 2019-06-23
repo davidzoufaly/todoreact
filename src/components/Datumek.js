@@ -28,7 +28,7 @@ class Datumek extends React.Component {
       case 6:
         weekDay = "saturday";
         break;
-      case 7:
+      case 0:
         weekDay = "sunday";
         break;
       default:
