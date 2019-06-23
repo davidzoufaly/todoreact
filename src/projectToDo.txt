@@ -5,7 +5,8 @@
 /// OPTIONAL
 - submit edit with enter or onClickOut
 - drag and drop
-- ikonky místo tlačítek
-- task folder
+- ikons instead of buttons
+- task folders
+- datepicker
 - DB instead of LS
-
+xx
