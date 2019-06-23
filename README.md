@@ -15,6 +15,8 @@
 - Tracking tasks (All, Completed, Progress rate)
 - Displaying random productive quote
 - Hiding / Showing completed tasks
+- Winning sound when all tasks are completed
+- Displaying week day
 
 ## Version
 
