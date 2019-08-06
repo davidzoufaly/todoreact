@@ -1,4 +1,4 @@
-# Simple 2DO app coded with React
+# 2DO app coded with React
 
 - Uses Localstorage instead of DB -> Storing tasks and hide/show option
 - Does not use any state manager (Redux etc.)
